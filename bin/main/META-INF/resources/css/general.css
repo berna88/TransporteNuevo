@@ -1,0 +1,50 @@
+@charset "UTF-8";
+body{
+	font-family: "Source Sans Pro";
+}
+.bolder{
+	font-weight: bold;
+}
+.conceptos{
+font-size: 1.125em;
+}
+.inLine{
+	display: inline-block;
+}
+.fw-g{
+	font-weight: 300;
+}
+.bolder{
+	font-weight: bold;
+}
+.hr-remuneracion{
+	border-top: 1px solid rgb(203, 184, 116););
+}
+.l-h{
+	line-height: 15px;
+}
+.alt{
+	height: 250px;
+}
+.txt-center{
+	text-align: center;
+}
+
+#transporte .input-black{
+	background-color: black;
+    border-color: #ccb874;
+    color: white;
+    font-weight: 600;
+}
+.form-control:focus {
+    color: #495057;
+    background-color: #FFF;
+    border-color: #cab874;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgb(23, 23, 23);
+}
+@media screen and (max-width: 991px) {
+  .alt{
+	height: 330px;
+}
+}
