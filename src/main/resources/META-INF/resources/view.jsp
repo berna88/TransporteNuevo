@@ -3,10 +3,11 @@
 <link rel="stylesheet" type="text/css" href='<%=request.getContextPath()+"/css/banner.css"%>'>
 <link rel="stylesheet" type="text/css" href='<%=request.getContextPath()+"/css/general.css"%>'>
 <link rel="stylesheet" type="text/css" href='<%=request.getContextPath()+"/css/form.css"%>'>
+<link rel="stylesheet" type="text/css" href='<%=request.getContextPath()+"/css/modal.css"%>'>
 <%@ include file="jsp/header/banner.jsp" %>
 
  <portlet:resourceURL id="getRutas" var="getRutasURL" ></portlet:resourceURL>
- 	<portlet:resourceURL id="getCapacidadDisponibilidad" var="getCapacidadDisponibilidadURL" ></portlet:resourceURL>
+<portlet:resourceURL id="getCapacidadDisponibilidad" var="getCapacidadDisponibilidadURL" ></portlet:resourceURL>
 <portlet:resourceURL id="getParadas" var="getParadasURL" ></portlet:resourceURL>
 <portlet:resourceURL id="getParadasSolicitud" var="getParadasSolicitudURL" ></portlet:resourceURL>
 

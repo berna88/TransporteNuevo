@@ -22,40 +22,75 @@
 			    </div>
 			    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 mb-3">
 			    	<label for="exampleFormControlSelect1">Ruta elegida<span class="amarillo">*</span></label>
-				    <select name="<portlet:namespace/>rutaElegida" class="form-control form-control-sm" id="rutasSolicitud" onchange="getParadas(this.value)">
+				    <select name="<portlet:namespace/>rutaElegida" class="form-control form-control-sm" id="rutasSolicitud" onchange="getParadas(this.value)" required="required">
 				     </select>
 			    </div>
 			    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 mb-5">
 			    	<label for="exampleFormControlSelect1">Parada elegida<span class="amarillo">*</span></label>
-				    <select name="<portlet:namespace/>paradaElegida" class="form-control form-control-sm" id="paradasRuta">
+				    <select name="<portlet:namespace/>paradaElegida" class="form-control form-control-sm" id="paradasRuta" required="required">
 				     
 				    </select>
 			    </div>
 			    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 mb-2">
 			    	<label for="exampleFormControlSelect1" class="font-weight-bold">Reglamento de transporte</label>
 			  	</div>
-			  	<div class="col-sm-12 mb-5">
-			        
+			  	<div class="col-sm-12">
 			        <div class="form-check">
 						<label class="terminosVacaciones">
-						  <input id="CheckPoliticas" type="radio" name="radio" required="required">
+						  <input id="reglamento" type="checkbox" name="radio" required="required">
 						  <span class="checkmark"></span>
 						  He leido y acepto <a href="" class="amarillo">Addendum el reglamento para transporte de empleados de José Cuervo.</a>
 						</label>
 					</div>
 					<div class="form-check">
 						<label class="terminosVacaciones">
-						  <input id="CheckReglamentos" type="radio" name="radio" required="required">
+						  <input id="errorUtep" type="checkbox" name="radio" required="required">
 						  <span class="checkmark"></span>
-						  He leido y acepto el reglamento de <a href="" class="amarillo">Transporte general UTEP.</a>
+						  He leido y acepto el reglamento de  <a href="" class="amarillo"> Transporte general UTEP.</a>
 						</label>
 					</div>
 			    </div>
+			    <div class="col-sm-12 mt-20 mb-20">
+			    	<p id="errorReglamento" style="color:red;">Debes aceptar el reglamento para transporte de empleados de José Cuervo.</p>
+			    	<p id="error" style="color:red;">Debes aceptar el reglamento de Transporte general UTEP.</p>
+			    </div>
 			    <div class="col-sm-12">
-			    	<button type="submit" class="pl-6 pr-6 btn btn-primary border border-0 float-right font-weight-bold" style="background-color: #cbb874;color: black;">Solicitar</button>
+			    	<button onclick="valid()" type="submit" class="pl-6 pr-6 btn btn-primary border border-0 float-right font-weight-bold" style="background-color: #cbb874;color: black;">Solicitar</button>
 			    </div>
 			</form>		
 		</article>
 	</section>
 </div>
+<script>
+$(document).ready(function () {
+	$('#errorReglamento').hide();
+	$('#error').hide();
+});
+ 
+function valid(){
+	
+	var reglamento = document.getElementById('reglamento');
+	var utep = document.getElementById('errorUtep');
+	if(reglamento.checked == false){
+		$(document).ready(function () {
+	    	  $('#errorReglamento').show();
+	    	  setTimeout(function () {
+	    	      $('#errorReglamento').hide();
+	    	  }, 3000);
+	    });
+		return false;
+	}
+	if(utep.checked == false){
+		$(document).ready(function () {
+	    	  $('#error').show();
+	    	  setTimeout(function () {
+	    	      $('#error').hide();
+	    	  }, 3000);
+	    });
+		return false;
+	}
+	console.log(reglamento.checked);
+	console.log(utep.checked);
+}
+</script>
 
