@@ -14,7 +14,7 @@
 			    </div>
 			    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 mb-3">
 			    	<label>Teléfono (móvil)<span class="amarillo">*</span></label>
-			      	<input type="text" value="${mobile}" name="<portlet:namespace/>telefono" disabled class="form-control form-control-sm" >
+			      	<input type="text" value="${mobile}" name="<portlet:namespace/>telefono" class="form-control form-control-sm" >
 			    </div>
 			    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 mb-3">
 			    	<label>Fecha<span class="amarillo"></span></label>
@@ -87,10 +87,12 @@ function valid(){
 	    	      $('#error').hide();
 	    	  }, 3000);
 	    });
-		return false;
+		return false;	
 	}
-	console.log(reglamento.checked);
-	console.log(utep.checked);
+	$.dialog({
+	    title: 'Transporte',
+	    content: 'Tu solicitud se envió correctamente', 
+	});
 }
 </script>
 

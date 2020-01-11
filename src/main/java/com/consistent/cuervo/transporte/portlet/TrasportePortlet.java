@@ -16,7 +16,7 @@ import javax.portlet.RenderResponse;
 import org.osgi.service.component.annotations.Component;
 
 /**
- * @author Jonathan Cruz Sánchez
+ * @author Jonathan Cruz Sï¿½nchez
  */
 @Component(
 		
@@ -28,6 +28,7 @@ import org.osgi.service.component.annotations.Component;
 		"javax.portlet.init-param.template-path=/",
 		"javax.portlet.init-param.view-template=/view.jsp",
 		"javax.portlet.name=" + TrasportePortletKeys.Trasporte,
+		"javax.portlet.init-param.add-process-action-success-action=false",
 		"javax.portlet.resource-bundle=content.Language",
 		"javax.portlet.security-role-ref=power-user,user"
 	},

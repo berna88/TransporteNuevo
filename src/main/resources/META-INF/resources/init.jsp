@@ -13,3 +13,24 @@ taglib uri="http://liferay.com/tld/ui" prefix="liferay-ui" %>
 
 <portlet:defineObjects />
 
+<link rel="stylesheet" type="text/css" href='<%=request.getContextPath()+"/css/jquery-confirm.min.css"%>'>
+<script src='<%=request.getContextPath()+"/js/jquery-confirm.min.js"%>'></script>
+<style>
+.jconfirm .jconfirm-box{
+	background: #202020 !important;
+    color: white;
+    border: solid 1px #b1a16b;
+}
+.jconfirm-title-c{
+	text-align: center;
+    color: #b1a16b;
+}
+.jconfirm-content{
+	text-align: center;
+}
+.jconfirm-buttons button{
+    border: none;
+    background: #b1a16b !important;
+    color: #202020;
+}
+</style>
