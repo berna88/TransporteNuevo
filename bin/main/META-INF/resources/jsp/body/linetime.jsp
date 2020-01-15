@@ -45,11 +45,11 @@
 	<div class="modal-content-cuervo-marcas">
     	<div class="container">
         	<div class="row">
-            	<div class="col-md-12" style="display: flex;justify-content: center;align-items: center;flex-direction:column;">
-            		<div style="width: 60%;display: flex;justify-content: flex-end;">
-            			<span style="font-size: 1.5rem;" class="close-cuervo-marcas">&times;</span>
-            		</div>
-                    <img id="mapaRuta" style="width: 60%;object-fit: cover;height: 100%;border-radius: 5px" alt="">
+            	<div class="col-md-12" class="d-flex justify-content-center flex-column align-items-center">
+            		<div id="modal-mensajeria" class="d-flex justify-content-center flex-column align-items-center rounded-lg w-100 p-5" style="height: 500px;">
+	            		<span style="font-size: 1.5rem;position: absolute;right: 34px;top:6px;cursor: pointer;color: #ccb874;" class="close-cuervo-marcas">&times;</span> 
+	                    <img id="mapaRuta" class="rounded-lg w-100" style="object-fit: cover;height: 100%;" alt=""> 
+                    </div>
                 </div>
            </div>
        </div>

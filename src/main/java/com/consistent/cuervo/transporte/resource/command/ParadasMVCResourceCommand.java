@@ -1,11 +1,15 @@
 package com.consistent.cuervo.transporte.resource.command;
 
 import com.consistent.cuervo.transporte.constants.TrasportePortletKeys;
+import com.consistent.cuervo.transporte.portlet.TrasportePortlet;
 import com.liferay.document.library.kernel.model.DLFileEntry;
+import com.liferay.document.library.kernel.service.DLAppLocalService;
 import com.liferay.document.library.kernel.service.DLFileEntryLocalServiceUtil;
 import com.liferay.portal.kernel.json.JSONArray;
 import com.liferay.portal.kernel.json.JSONFactoryUtil;
 import com.liferay.portal.kernel.json.JSONObject;
+import com.liferay.portal.kernel.log.Log;
+import com.liferay.portal.kernel.log.LogFactoryUtil;
 import com.liferay.portal.kernel.portlet.bridges.mvc.BaseMVCResourceCommand;
 import com.liferay.portal.kernel.portlet.bridges.mvc.MVCResourceCommand;
 import com.liferay.portal.kernel.theme.ThemeDisplay;
@@ -34,7 +38,8 @@ import mx.com.cuervo.transporte.fileentries.service.api.FileEntriesCuervoTranspo
 		 service = MVCResourceCommand.class
 		 )
 public class ParadasMVCResourceCommand extends BaseMVCResourceCommand {
-
+	
+	private static Log _log = LogFactoryUtil.getLog(ParadasMVCResourceCommand.class);
 	@Override
 	protected void doServeResource(ResourceRequest resourceRequest, ResourceResponse resourceResponse)
 			throws Exception {
@@ -51,34 +56,46 @@ public class ParadasMVCResourceCommand extends BaseMVCResourceCommand {
 				themeDisplay.getScopeGroupId(), Long.valueOf(rutaId));
 			
 		Ruta ruta = _rutaLocalService.getRuta(Long.valueOf(rutaId));
+		
 		for(Parada parada: paradas) {
-			
 			JSONObject json = JSONFactoryUtil.createJSONObject();
+			
+			
 			
 			if(parada.getNombreArchivo().equals("N/A") ||parada.getNombreArchivo().equals("no aplica"))
 			{
 				json.put("urlImage", "");
 					
 			}else {
-				long imageId = _fileEntriesCuervoTransporteService.getFileId(parada.getNombreCarpeta(),
-						parada.getNombreArchivo(), themeDisplay);
-				long imageMapaId = _fileEntriesCuervoTransporteService.getFileId(parada.getNombreCarpeta(),
-						"mapa.png", themeDisplay);
-				
-				DLFileEntry imageFE = null;
-				DLFileEntry imageFEMap = null;
-				imageFE = DLFileEntryLocalServiceUtil.getFileEntry(imageId);
-				imageFEMap = DLFileEntryLocalServiceUtil.getFileEntry(imageMapaId);
-				String urlImage = _fileEntriesCuervoTransporteService.getUrlFile(themeDisplay, imageFE);
-				String urlMapa = _fileEntriesCuervoTransporteService.getUrlFile(themeDisplay, imageFEMap);
-				
-				json.put("urlMapa", urlMapa);
-				json.put("urlImage", urlImage);
-				
-			
+				long imageMapaIds = 0;
+				imageMapaIds = _fileEntriesCuervoTransporteService.getFileId(parada.getNombreCarpeta(),
+						"map.png", themeDisplay);
+				_log.info("antes de validar mapa");
+				if(imageMapaIds != 0) {
+					_log.info("NO Es null");
+				}else {
+					_log.info("SI Es null");
+				}
+				if(!parada.getNombreArchivo().isEmpty()) {
+					long imageId = _fileEntriesCuervoTransporteService.getFileId(parada.getNombreCarpeta(),
+							parada.getNombreArchivo(), themeDisplay);
+					long imageMapaId = _fileEntriesCuervoTransporteService.getFileId(parada.getNombreCarpeta(),
+							"mapa.png", themeDisplay);
+					 
+					DLFileEntry imageFE = null;
+					DLFileEntry imageFEMap = null;
+					imageFE = DLFileEntryLocalServiceUtil.getFileEntry(imageId);
+					imageFEMap = DLFileEntryLocalServiceUtil.getFileEntry(imageMapaId);
+					imageFEMap.getLatestFileVersion(true);
+					String urlImage = _fileEntriesCuervoTransporteService.getUrlFile(themeDisplay, imageFE);
+					String urlMapa = _fileEntriesCuervoTransporteService.getUrlFile(themeDisplay, imageFEMap);
+					_log.info("UrlMapa: "+urlMapa);
+					_log.info("UrlMapa: "+urlImage);
+					json.put("urlMapa", urlMapa);
+					json.put("urlImage", urlImage);
+				}
 			}
 				
-			
 			json.put("nombreRuta", ruta.getNombreRuta());
 			json.put("nombreParada",parada.getNombreParada());
 			jsonArray.put(json);
