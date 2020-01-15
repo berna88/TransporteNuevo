@@ -81,7 +81,13 @@
 				}
 
 				function createElements(paradas){
-						
+						console.log("paradas berni: ");
+						console.log("paradas: "); 
+						console.log(paradas);
+					var mapa = document.getElementById('mapaRuta');
+					console.log("Mapa");
+					console.log(mapa);
+					mapa.src = paradas[0].urlMapa;
 					var parent = document.getElementById('parent');
 					
 					while (parent.firstChild) {

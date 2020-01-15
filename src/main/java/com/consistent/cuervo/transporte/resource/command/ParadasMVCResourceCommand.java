@@ -62,11 +62,19 @@ public class ParadasMVCResourceCommand extends BaseMVCResourceCommand {
 			}else {
 				long imageId = _fileEntriesCuervoTransporteService.getFileId(parada.getNombreCarpeta(),
 						parada.getNombreArchivo(), themeDisplay);
+				long imageMapaId = _fileEntriesCuervoTransporteService.getFileId(parada.getNombreCarpeta(),
+						"mapa.png", themeDisplay);
 				
 				DLFileEntry imageFE = null;
+				DLFileEntry imageFEMap = null;
 				imageFE = DLFileEntryLocalServiceUtil.getFileEntry(imageId);
+				imageFEMap = DLFileEntryLocalServiceUtil.getFileEntry(imageMapaId);
 				String urlImage = _fileEntriesCuervoTransporteService.getUrlFile(themeDisplay, imageFE);
+				String urlMapa = _fileEntriesCuervoTransporteService.getUrlFile(themeDisplay, imageFEMap);
+				
+				json.put("urlMapa", urlMapa);
 				json.put("urlImage", urlImage);
+				
 			
 			}
 				

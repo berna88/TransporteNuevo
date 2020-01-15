@@ -1,6 +1,9 @@
 package com.consistent.cuervo.transporte.portlet;
 
 import com.consistent.cuervo.transporte.constants.TrasportePortletKeys;
+import com.consistent.cuervo.transporte.resource.command.RutasMVCResourceCommand;
+import com.liferay.portal.kernel.log.Log;
+import com.liferay.portal.kernel.log.LogFactoryUtil;
 import com.liferay.portal.kernel.model.User;
 import com.liferay.portal.kernel.portlet.bridges.mvc.MVCPortlet;
 import com.liferay.portal.kernel.theme.ThemeDisplay;
@@ -35,10 +38,11 @@ import org.osgi.service.component.annotations.Component;
 	service = Portlet.class
 )
 public class TrasportePortlet extends MVCPortlet {
+	private static Log _log = LogFactoryUtil.getLog(TrasportePortlet.class);
 	@Override
 	public void render(RenderRequest renderRequest, RenderResponse renderResponse)
 			throws IOException, PortletException {
-		
+		_log.info("Render");
 		ThemeDisplay themeDisplay = (ThemeDisplay) renderRequest.getAttribute(WebKeys.THEME_DISPLAY);
 		User user = themeDisplay.getUser();
 		String noEmpleado = (String) user.getExpandoBridge().getAttribute("No_Empleado");
