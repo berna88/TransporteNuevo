@@ -10,11 +10,11 @@
 			  <div class="row">
 			    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 mb-3">
 			    <label>Empleado<span class="amarillo">*</span></label>
-			      <input type="text" value="${noEmpleado}" name="<portlet:namespace/>empleado" disabled class="form-control form-control-sm" >
+			      <input type="text" value="${noEmpleado}" name="<portlet:namespace/>empleado" disabled class="form-control form-control-sm" required="required">
 			    </div>
 			    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 mb-3">
 			    	<label>Teléfono (móvil)<span class="amarillo">*</span></label>
-			      	<input type="text" value="${mobile}" name="<portlet:namespace/>telefono" class="form-control form-control-sm" >
+			      	<input type="text" value="${mobile}" name="<portlet:namespace/>telefono" class="form-control form-control-sm" required="required">
 			    </div>
 			    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 mb-3">
 			    	<label>Fecha<span class="amarillo"></span></label>
@@ -39,14 +39,14 @@
 						<label class="terminosVacaciones">
 						  <input id="reglamento" type="checkbox" name="radio" required="required">
 						  <span class="checkmark"></span>
-						  He leido y acepto <a href="" class="amarillo">Addendum el reglamento para transporte de empleados de José Cuervo.</a>
+						  He leido y acepto <a target="_blank" style="color:#ccb874;" href='<%=request.getContextPath()+"/doc/AddenumalReglamentodeTransporte.pdf"%>' class="amarillo">Addendum el reglamento para transporte de empleados de José Cuervo.</a>
 						</label>
 					</div>
 					<div class="form-check">
 						<label class="terminosVacaciones">
 						  <input id="errorUtep" type="checkbox" name="radio" required="required">
 						  <span class="checkmark"></span>
-						  He leido y acepto el reglamento de  <a href="" class="amarillo"> Transporte general UTEP.</a>
+						  He leido y acepto el reglamento de  <a target="_blank" style="color:#ccb874;" href='<%=request.getContextPath()+"/doc/ReglamentoUTEP.pdf"%>' class="amarillo"> Transporte general UTEP.</a>
 						</label>
 					</div>
 			    </div>

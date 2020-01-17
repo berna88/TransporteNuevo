@@ -56,12 +56,10 @@ public class ParadasMVCResourceCommand extends BaseMVCResourceCommand {
 				themeDisplay.getScopeGroupId(), Long.valueOf(rutaId));
 			
 		Ruta ruta = _rutaLocalService.getRuta(Long.valueOf(rutaId));
-		
+		_log.info(" antes paradas: ");
 		for(Parada parada: paradas) {
 			JSONObject json = JSONFactoryUtil.createJSONObject();
-			
-			
-			
+		
 			if(parada.getNombreArchivo().equals("N/A") ||parada.getNombreArchivo().equals("no aplica"))
 			{
 				json.put("urlImage", "");
@@ -70,34 +68,32 @@ public class ParadasMVCResourceCommand extends BaseMVCResourceCommand {
 				long imageMapaIds = 0;
 				imageMapaIds = _fileEntriesCuervoTransporteService.getFileId(parada.getNombreCarpeta(),
 						"map.png", themeDisplay);
-				_log.info("antes de validar mapa");
+				
 				if(imageMapaIds != 0) {
-					_log.info("NO Es null");
+					_log.info("Existe el mapa");
+					DLFileEntry imageFEMap = null;
+					imageFEMap = DLFileEntryLocalServiceUtil.getFileEntry(imageMapaIds);
+					imageFEMap.getLatestFileVersion(true);
+					String urlMapa = _fileEntriesCuervoTransporteService.getUrlFile(themeDisplay, imageFEMap);
+					json.put("urlMapa", urlMapa);
 				}else {
-					_log.info("SI Es null");
+					_log.info("No existe el mapa");
 				}
 				if(!parada.getNombreArchivo().isEmpty()) {
 					long imageId = _fileEntriesCuervoTransporteService.getFileId(parada.getNombreCarpeta(),
 							parada.getNombreArchivo(), themeDisplay);
-					long imageMapaId = _fileEntriesCuervoTransporteService.getFileId(parada.getNombreCarpeta(),
-							"mapa.png", themeDisplay);
-					 
 					DLFileEntry imageFE = null;
-					DLFileEntry imageFEMap = null;
 					imageFE = DLFileEntryLocalServiceUtil.getFileEntry(imageId);
-					imageFEMap = DLFileEntryLocalServiceUtil.getFileEntry(imageMapaId);
-					imageFEMap.getLatestFileVersion(true);
+					imageFE.getLatestFileVersion(true);
 					String urlImage = _fileEntriesCuervoTransporteService.getUrlFile(themeDisplay, imageFE);
-					String urlMapa = _fileEntriesCuervoTransporteService.getUrlFile(themeDisplay, imageFEMap);
-					_log.info("UrlMapa: "+urlMapa);
-					_log.info("UrlMapa: "+urlImage);
-					json.put("urlMapa", urlMapa);
 					json.put("urlImage", urlImage);
 				}
 			}
-				
+			
+			json.put("descripcionParada", parada.getDescripcion());
 			json.put("nombreRuta", ruta.getNombreRuta());
 			json.put("nombreParada",parada.getNombreParada());
+			json.put("horarioParada", parada.getHorario());
 			jsonArray.put(json);
 				
 			}

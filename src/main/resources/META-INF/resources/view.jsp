@@ -81,13 +81,10 @@
 				}
 
 				function createElements(paradas){
-						console.log("paradas berni: ");
-						console.log("paradas: "); 
-						console.log(paradas);
+						//colocando el mapa de la ruta
 					var mapa = document.getElementById('mapaRuta');
-					console.log("Mapa");
-					console.log(mapa);
 					mapa.src = paradas[0].urlMapa;
+					
 					var parent = document.getElementById('parent');
 					
 					while (parent.firstChild) {
@@ -118,13 +115,17 @@
 					div.appendChild(divT);
 					var p = document.createElement('P');
 					p.setAttribute('class','timeline-fecha');
-					var text = document.createTextNode(paradas[i].nombreRuta);
+					var text = document.createTextNode(paradas[i].horarioParada); 
 					p.appendChild(text);
 					divT.appendChild(p);
 					var h3 = document.createElement('H3');
 					h3.setAttribute('class','titulon2');
 					h3.innerText=paradas[i].nombreParada;
 					divT.appendChild(h3);
+					var parrafo = document.createElement('P');
+					parrafo.setAttribute('class','description');
+					parrafo.innerText=paradas[i].descripcionParada;
+					divT.appendChild(parrafo);
 					var img = document.createElement('IMG');
 					img.setAttribute('src',paradas[i].urlImage);
 					divT.appendChild(img);
