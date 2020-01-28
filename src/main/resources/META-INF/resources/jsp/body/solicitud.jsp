@@ -39,14 +39,14 @@
 						<label class="terminosVacaciones">
 						  <input id="reglamento" type="checkbox" name="radio" required="required">
 						  <span class="checkmark"></span>
-						  He leido y acepto <a target="_blank" style="color:#ccb874;" href='<%=request.getContextPath()+"/doc/AddenumalReglamentodeTransporte.pdf"%>' class="amarillo">Addendum el reglamento para transporte de empleados de José Cuervo.</a>
+						  He leído y acepto <a target="_blank" style="color:#ccb874;" href='<%=request.getContextPath()+"/doc/AddenumalReglamentodeTransporte.pdf"%>' class="amarillo">Addendum el reglamento para transporte de empleados de José Cuervo.</a>
 						</label>
 					</div>
 					<div class="form-check">
 						<label class="terminosVacaciones">
 						  <input id="errorUtep" type="checkbox" name="radio" required="required">
 						  <span class="checkmark"></span>
-						  He leido y acepto el reglamento de  <a target="_blank" style="color:#ccb874;" href='<%=request.getContextPath()+"/doc/ReglamentoUTEP.pdf"%>' class="amarillo"> Transporte general UTEP.</a>
+						  He leído y acepto el reglamento de  <a target="_blank" style="color:#ccb874;" href='<%=request.getContextPath()+"/doc/ReglamentoUTEP.pdf"%>' class="amarillo"> Transporte general UTEP.</a>
 						</label>
 					</div>
 			    </div>

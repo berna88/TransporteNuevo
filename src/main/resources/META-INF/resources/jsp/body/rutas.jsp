@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<h4 class="txt-center">Transporte General</h4>
+ 
 <div class="container">				
 	<form action="#" class="formulario mt-50 mb-50 d-md-none">
 		<div class="formulario-select">
