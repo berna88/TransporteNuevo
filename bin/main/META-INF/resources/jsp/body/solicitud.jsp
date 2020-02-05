@@ -14,7 +14,7 @@
 			    </div>
 			    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 mb-3">
 			    	<label>Teléfono (móvil)<span class="amarillo">*</span></label>
-			      	<input type="text" value="${mobile}" name="<portlet:namespace/>telefono" class="form-control form-control-sm" required="required">
+			      	<input id="telefono" type="text" value="${mobile}" name="<portlet:namespace/>telefono" class="form-control form-control-sm" required="required">
 			    </div>
 			    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 mb-3">
 			    	<label>Fecha<span class="amarillo"></span></label>
@@ -53,6 +53,7 @@
 			    <div class="col-sm-12 mt-20 mb-20">
 			    	<p id="errorReglamento" style="color:red;">Debes aceptar el reglamento para transporte de empleados de José Cuervo.</p>
 			    	<p id="error" style="color:red;">Debes aceptar el reglamento de Transporte general UTEP.</p>
+			    	<p id="errorTelefono" style="color:red;">Completa todos los campos.</p>
 			    </div>
 			    <div class="col-sm-12">
 			    	<button onclick="valid()" type="submit" class="pl-6 pr-6 btn btn-primary border border-0 float-right font-weight-bold" style="background-color: #cbb874;color: black;">Solicitar</button>
@@ -65,6 +66,7 @@
 $(document).ready(function () {
 	$('#errorReglamento').hide();
 	$('#error').hide();
+	$('#errorTelefono').hide();
 });
  
 function valid(){
@@ -85,6 +87,16 @@ function valid(){
 	    	  $('#error').show();
 	    	  setTimeout(function () {
 	    	      $('#error').hide();
+	    	  }, 3000);
+	    });
+		return false;	
+	}
+	
+	if(document.getElementById('telefono').value === ""){
+		$(document).ready(function () {
+	    	  $('#errorTelefono').show();
+	    	  setTimeout(function () {
+	    	      $('#errorTelefono').hide();
 	    	  }, 3000);
 	    });
 		return false;	
