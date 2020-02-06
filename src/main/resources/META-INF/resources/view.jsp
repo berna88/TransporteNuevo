@@ -4,7 +4,7 @@
 <link rel="stylesheet" type="text/css" href='<%=request.getContextPath()+"/css/general.css"%>'>
 <link rel="stylesheet" type="text/css" href='<%=request.getContextPath()+"/css/form.css"%>'>
 <link rel="stylesheet" type="text/css" href='<%=request.getContextPath()+"/css/modal.css"%>'>
-<%@ include file="jsp/header/banner.jsp" %>
+
 
  <portlet:resourceURL id="getRutas" var="getRutasURL" ></portlet:resourceURL>
 <portlet:resourceURL id="getCapacidadDisponibilidad" var="getCapacidadDisponibilidadURL" ></portlet:resourceURL>
@@ -17,7 +17,7 @@
 <body class="container">
  	<section class="row justify-content-center">
  		<article class="col-10 col-sm-10 col-md-10 col-lg-10 col-xl-10">
- 			<%@ include file="jsp/body/rutas.jsp" %>
+ 			<%@ include file="jsp/body/rutas.jsp" %> 
  		</article>
  	</section>
 </body>
@@ -45,7 +45,7 @@
 								document.getElementById('disponibilidadMapa').value = response.disponibilidad + " persona";
 							else
 								document.getElementById('disponibilidadMapa').value = response.disponibilidad + " personas";
-							
+							saludo(response);
 						})
 						.fail(function(jqXHR, textStatus, errorThrown) {
 							 console.log("Request: " + JSON.stringify(jqXHR));
@@ -158,8 +158,10 @@
 							for(var i = 0; i < response.length;i++){
 								
 								var option = document.createElement("option");
-								
+								console.log("Hola berni");
+								 console.log(response[i]);
 								 option.value = response[i].idParada;
+								 console.log(option.value);
 								 option.text = response[i].nombreParada;
 								 select.appendChild(option);
 								}
@@ -232,5 +234,10 @@
 		}
 	console.log('FECHA::' + fecha);
 	document.getElementById('fecha').value=fecha;
+	
+	function saludo(response){
+		console.table(response);
+		console.log(response.disponibilidad);
+	}
 </script>
    

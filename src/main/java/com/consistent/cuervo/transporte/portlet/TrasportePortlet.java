@@ -26,7 +26,7 @@ import org.osgi.service.component.annotations.Component;
 	configurationPid = "com.consistent.cuervo.transporte.configuracion.ConfigurationTransporte",
 	immediate = true,
 	property = {
-		"com.liferay.portlet.display-category=category.sample",
+		"com.liferay.portlet.display-category=root//Cuervo//Intranet",
 		"com.liferay.portlet.instanceable=true",
 		"javax.portlet.init-param.template-path=/",
 		"javax.portlet.init-param.view-template=/view.jsp",

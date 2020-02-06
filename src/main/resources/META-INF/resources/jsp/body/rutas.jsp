@@ -7,7 +7,7 @@
 			<i class="fas fa-chevron-down"></i>
 		  	<select class="custom-select" id="selectSeccion">
 				<option value="pills-seccion" data-toggle="tab" href="#pills-seccion" role="tab" aria-controls="pills-seccion" aria-selected="true">Rutas</option>
-				<option value="pills-seccion1" data-toggle="tab" href="#pills-seccion1" role="tab" aria-controls="pills-seccion1" aria-selected="false">Solicitud</option>
+				<option id="formSolicitud" value="pills-seccion1" data-toggle="tab" href="#pills-seccion1" role="tab" aria-controls="pills-seccion1" aria-selected="false">Solicitud</option>
 			</select>
 		</div>
 	</form>
