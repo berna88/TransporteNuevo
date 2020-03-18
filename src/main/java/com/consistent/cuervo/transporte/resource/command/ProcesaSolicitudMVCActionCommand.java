@@ -1,6 +1,9 @@
 package com.consistent.cuervo.transporte.resource.command;
 
+
 import com.consistent.cuervo.transporte.constants.TrasportePortletKeys;
+import com.liferay.portal.kernel.log.Log;
+import com.liferay.portal.kernel.log.LogFactoryUtil;
 import com.liferay.portal.kernel.model.User;
 import com.liferay.portal.kernel.portlet.bridges.mvc.BaseMVCActionCommand;
 import com.liferay.portal.kernel.portlet.bridges.mvc.MVCActionCommand;
@@ -29,7 +32,7 @@ import mx.com.cuervo.rutas.transporte.service.SolicitudLocalService;
 		 service = MVCActionCommand.class
 		 )
 public class ProcesaSolicitudMVCActionCommand extends BaseMVCActionCommand {
-
+	
 	@Override
 	protected void doProcessAction(ActionRequest actionRequest, ActionResponse actionResponse) throws Exception {
 		
@@ -41,7 +44,7 @@ public class ProcesaSolicitudMVCActionCommand extends BaseMVCActionCommand {
 		User user = themeDisplay.getUser();
 		String noEmpleado = (String) user.getExpandoBridge().getAttribute("No_Empleado");
 		
-		String mobile = (String) user.getExpandoBridge().getAttribute("mobile");
+		String mobile = ParamUtil.getString(actionRequest, "telefono","");
 		String rutaId=ParamUtil.getString(actionRequest, "rutaElegida","");
 		String paradaId=ParamUtil.getString(actionRequest, "paradaElegida","");
 		System.out.println("ruta:" + rutaId);

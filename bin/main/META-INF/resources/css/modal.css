@@ -15,14 +15,30 @@
 }
 
 /* Modal Content */
-.modal-content-cuervo-marcas {
+.modal-content-cuervo-marcas-transporte {
  background-color: transparent;
  margin: auto;
  padding: 20px;
  /*border: 1px solid #888;*/
  width: 80%;
+ margin-top:50px;
 }
 
 #modal-mensajeria{
 	border:solid 1px #ccb874;
+}
+.padding-transporte{
+	padding: 2rem;
+}
+
+@media screen and (max-width: 991px) {
+  .modal-content-cuervo-marcas-transporte {
+ width: 100% !important;
+}
+.padding-transporte{
+	padding: 1.5rem .5rem .5rem .5rem;
+}
+.close-cuervo-marcas{
+	top:-4px !important;
+}
 }

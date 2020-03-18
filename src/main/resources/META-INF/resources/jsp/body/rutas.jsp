@@ -20,6 +20,7 @@
 		</li>
 	</ul>
 </div>
+
 <div class="tab-content mb-50" id="pills-tabContent">
 	<%@ include file="linetime.jsp" %>
 	<%@ include file="solicitud.jsp" %>	  	
