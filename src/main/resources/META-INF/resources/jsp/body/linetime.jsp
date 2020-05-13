@@ -58,7 +58,7 @@
 <!-- Fin modal -->
 <script>
 function modal(){
-	alert("Hola modal");
+	//alert("Hola modal");
 }
 <!-- script modal -->
 // Get the modal

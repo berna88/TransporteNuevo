@@ -158,10 +158,9 @@
 							for(var i = 0; i < response.length;i++){
 								
 								var option = document.createElement("option");
-								console.log("Hola berni");
-								 console.log(response[i]);
+								
 								 option.value = response[i].idParada;
-								 console.log(option.value);
+								 
 								 option.text = response[i].nombreParada;
 								 select.appendChild(option);
 								}
@@ -189,7 +188,6 @@
 			data        : {}
 		})
 		.done(function(response) {
-			console.log(response);
 			for(var i = 0; i < response.length;i++){
 			var select = document.getElementById('exampleFormControlSelect1');			
 			var selectSolicitud = document.getElementById('rutasSolicitud');			
@@ -232,12 +230,11 @@
 	}else{
 		fecha = day +'-'+month+'-'+year;
 		}
-	console.log('FECHA::' + fecha);
 	document.getElementById('fecha').value=fecha;
 	
 	function saludo(response){
 		console.table(response);
-		console.log(response.disponibilidad);
+		//console.log(response.disponibilidad);
 	}
 </script>
    
