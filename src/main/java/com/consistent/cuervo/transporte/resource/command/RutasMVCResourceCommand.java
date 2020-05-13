@@ -42,7 +42,7 @@ public class RutasMVCResourceCommand extends BaseMVCResourceCommand {
 	@Override
 	protected void doServeResource(ResourceRequest resourceRequest, ResourceResponse resourceResponse)
 			throws Exception {
-		_log.info("ServeResource ");
+		_log.debug("ServeResource ");
 		resourceResponse.setCharacterEncoding("UTF-8");
 		
 		ThemeDisplay themeDisplay = 
@@ -55,7 +55,7 @@ public class RutasMVCResourceCommand extends BaseMVCResourceCommand {
 		 JSONArray jsonArray = JSONFactoryUtil.createJSONArray();
 			
 		 for(Ruta ruta: rutas) {
-			 _log.info("Capacidad: "+ ruta.getCapacidad());
+			 _log.debug("Capacidad: "+ ruta.getCapacidad());
 
 			JSONObject json = JSONFactoryUtil.createJSONObject();
 				 

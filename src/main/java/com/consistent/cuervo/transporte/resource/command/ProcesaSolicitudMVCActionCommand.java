@@ -36,8 +36,6 @@ public class ProcesaSolicitudMVCActionCommand extends BaseMVCActionCommand {
 	@Override
 	protected void doProcessAction(ActionRequest actionRequest, ActionResponse actionResponse) throws Exception {
 		
-		System.out.println("INSIDE PROCESA SOLICITUD");
-		
 		ThemeDisplay themeDisplay = 
 				(ThemeDisplay) actionRequest.getAttribute(WebKeys.THEME_DISPLAY);
 
@@ -47,8 +45,6 @@ public class ProcesaSolicitudMVCActionCommand extends BaseMVCActionCommand {
 		String mobile = ParamUtil.getString(actionRequest, "telefono","");
 		String rutaId=ParamUtil.getString(actionRequest, "rutaElegida","");
 		String paradaId=ParamUtil.getString(actionRequest, "paradaElegida","");
-		System.out.println("ruta:" + rutaId);
-		System.out.println("parada:" + paradaId);
 
 		
 	    ServiceContext serviceContext = ServiceContextFactory.getInstance(

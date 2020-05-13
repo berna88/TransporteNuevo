@@ -44,7 +44,7 @@ public class ParadasMVCResourceCommand extends BaseMVCResourceCommand {
 	protected void doServeResource(ResourceRequest resourceRequest, ResourceResponse resourceResponse)
 			throws Exception {
 	
-	//	System.out.println("INSIDE GetParadas");
+	
 		
 		ThemeDisplay themeDisplay = 
 				(ThemeDisplay) resourceRequest.getAttribute(WebKeys.THEME_DISPLAY);
@@ -56,7 +56,7 @@ public class ParadasMVCResourceCommand extends BaseMVCResourceCommand {
 				themeDisplay.getScopeGroupId(), Long.valueOf(rutaId));
 			
 		Ruta ruta = _rutaLocalService.getRuta(Long.valueOf(rutaId));
-		_log.info(" antes paradas: ");
+		_log.debug(" antes paradas: ");
 		for(Parada parada: paradas) {
 			JSONObject json = JSONFactoryUtil.createJSONObject();
 		
@@ -70,14 +70,14 @@ public class ParadasMVCResourceCommand extends BaseMVCResourceCommand {
 						"map.png", themeDisplay);
 				
 				if(imageMapaIds != 0) {
-					_log.info("Existe el mapa");
+					_log.debug("Existe el mapa");
 					DLFileEntry imageFEMap = null;
 					imageFEMap = DLFileEntryLocalServiceUtil.getFileEntry(imageMapaIds);
 					imageFEMap.getLatestFileVersion(true);
 					String urlMapa = _fileEntriesCuervoTransporteService.getUrlFile(themeDisplay, imageFEMap);
 					json.put("urlMapa", urlMapa);
 				}else {
-					_log.info("No existe el mapa");
+					_log.debug("No existe el mapa");
 				}
 				if(!parada.getNombreArchivo().isEmpty()) {
 					long imageId = _fileEntriesCuervoTransporteService.getFileId(parada.getNombreCarpeta(),
@@ -99,7 +99,6 @@ public class ParadasMVCResourceCommand extends BaseMVCResourceCommand {
 			}
 		try {
 			
-	//		System.out.println(jsonArray.toString());
 			resourceResponse.getWriter().write(jsonArray.toString());
 		} catch (IOException e1) {
 			System.out.println(e1.getCause() + " = " + e1.getMessage());

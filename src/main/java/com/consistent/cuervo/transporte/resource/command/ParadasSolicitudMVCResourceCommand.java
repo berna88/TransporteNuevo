@@ -34,8 +34,6 @@ public class ParadasSolicitudMVCResourceCommand extends BaseMVCResourceCommand {
 	protected void doServeResource(ResourceRequest resourceRequest, ResourceResponse resourceResponse)
 			 {
 		
-		//System.out.println("INSIDE GetParadas Solicitud");
-		
 		ThemeDisplay themeDisplay = 
 				(ThemeDisplay) resourceRequest.getAttribute(WebKeys.THEME_DISPLAY);
 
@@ -54,8 +52,6 @@ public class ParadasSolicitudMVCResourceCommand extends BaseMVCResourceCommand {
 			
 			jsonArray.put(json);
 		}
-
-		//	System.out.println(jsonArray.toString());
 			try {
 				resourceResponse.getWriter().write(jsonArray.toString());
 			} catch (Exception e1) {
